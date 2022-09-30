@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
+import {useSelector} from "react-redux"
 import {useDispatch} from "react-redux";
 import {signUp,logIn} from "../actionCreaters/authActionCreaters"
+
 import "./Login.css";
+
 const Login = () => {
     const dispatch=useDispatch();
     const [isSignUp, setIsSignUp] = useState(true);
@@ -36,6 +39,7 @@ const onReset=()=>{
     confirmpass: "" })
 }
 
+const loading =useSelector((state)=>state.authReducer.loading)
     return (
 
         <div className="containers">
@@ -103,7 +107,7 @@ const onReset=()=>{
                                 <links onClick={() => {setIsSignUp((prev) => !prev);onReset()}} >{isSignUp ? "Login" : "Sign Up"}</links>
                             </div>
                             <div>
-                                <button className='button loginbtn' type="submit">{isSignUp ? "Sign Up" : "Login"}</button>
+                                <button className='button loginbtn' type="submit" disabled={loading}>{loading?"Loading..":isSignUp ? "Sign Up" : "Login"}</button>
                             </div>
                         </div>
 

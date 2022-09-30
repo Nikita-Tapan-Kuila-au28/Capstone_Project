@@ -5,7 +5,7 @@ const initialState={
 }
 
 
-const authReducer=(state={initialState:true,loading:false,error:false},action)=>{
+const authReducer=(state={data: null,loading:false,error:false},action)=>{
     switch(action.type){
         case "AUTH_START":
             return{
@@ -19,6 +19,7 @@ const authReducer=(state={initialState:true,loading:false,error:false},action)=>
         return{
             ...state,
             error:false,
+            loading: false,
             data:action.data
         };
         case"AUTH_FAIL":

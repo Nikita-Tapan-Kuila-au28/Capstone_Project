@@ -54,6 +54,11 @@
   background: transparent;
   border: 2px solid var(--white);
 }
+
+.button:disabled{
+  background:silver;
+  pointer-events: none;
+}
 ::placeholder {
   color:var(--black)
 }

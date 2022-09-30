@@ -5,9 +5,11 @@ import bcrypt from "bcrypt";
 //registering new user
 export const register=async(req,res)=>{
    mongooseUrl();
-    const{username,email_id,password,firstname,lastname}=req.body;
-    const hashpswd=await bcrypt.hash(password,10)
-    const newUser= new UserModel ({username,email_id,password:hashpswd,firstname,lastname});
+   
+    const hashpswd=await bcrypt.hash(req.body.password,10)
+  
+    req.body.password=hashpswd
+    const newUser= new UserModel (req.body);
     try {
         await newUser.save();
         res.status(200).json(newUser)
