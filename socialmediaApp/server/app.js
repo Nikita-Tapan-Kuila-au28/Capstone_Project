@@ -2,7 +2,8 @@ import express from "express";
 
 import bodyParser from "body-parser";
 
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+dotenv.config();
  import AuthRoute from "./Routes/Authroute.js";
  import UserRoute from "./Routes/UserRoute.js";
  import postRoute from "./Routes/postRoute.js";
@@ -27,7 +28,7 @@ app.use("/auth", AuthRoute)
 app.use('/user',UserRoute)
 app.use("/post",postRoute)
 
-dotenv.config();
+
 
 
 
